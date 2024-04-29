@@ -8,6 +8,7 @@ defmodule Observability.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      Observability.PromEx,
       ObservabilityWeb.Telemetry,
       Observability.Repo,
       {DNSCluster, query: Application.get_env(:observability, :dns_cluster_query) || :ignore},

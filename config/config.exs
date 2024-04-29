@@ -41,6 +41,14 @@ config :esbuild,
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
 
+# Configure PromEx based on the generated `prom_ex.ex`
+config :observability, Observability.PromEx,
+  disabled: false,
+  manual_metrics_start_delay: :no_delay,
+  drop_metrics_groups: [],
+  grafana: :disabled,
+  metrics_server: :disabled
+
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.3.2",
